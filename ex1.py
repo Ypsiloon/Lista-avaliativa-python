@@ -1,3 +1,8 @@
+# Jogo da Velha
+# Este é um jogo da velha simples para dois jogadores.
+# O tabuleiro é uma matriz 4x4 representada como uma lista de listas.
+# O jogo continua até que um jogador vença ou haja um empate.
+
 jogo_da_velha = [
                 ['_','_','_','_'],
                 ['_','_','_','_'],
@@ -5,6 +10,13 @@ jogo_da_velha = [
                 ['_','_','_','_'] ]
 
 def jogada(jogador_vez):
+  """
+    Solicita a coordenada para a jogada do jogador e atualiza o tabuleiro.
+
+    Args:
+        jogador_vez: O jogador atual ('X' ou 'O').
+
+    """
     while True:
         jogador = input("Digite a cordenada que deseja jogar [linha][coluna]: ")
         linha,coluna = [int(posicao) for posicao in jogador.split()]
@@ -17,10 +29,23 @@ def jogada(jogador_vez):
             break
     
 def desenhar_tabuleiro():
+  """
+    Desenha o tabuleiro na tela.
+
+    """
     for i in jogo_da_velha:
         print(i)
 
 def variar_jogador(i):
+  """
+    Alterna entre os jogadores 'X' e 'O' com base no número de jogadas.
+
+    Args:
+        i: O número de jogadas.
+
+    Retorna:
+        O jogador atual ('X' ou 'O').
+    """
     if i % 2 == 0:
         jogador_vez =  'O'
     else:
@@ -29,6 +54,12 @@ def variar_jogador(i):
     return jogador_vez
 
 def ganhou():
+  """
+    Verifica se um jogador venceu o jogo.
+
+    Retorna:
+        bool: True se algum jogador vencer, False caso contrário.
+    """
     for linha in jogo_da_velha:
         if linha[0] == linha[1] == linha[2] == linha[3] != "_":
             return True
