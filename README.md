@@ -1,6 +1,5 @@
 # Lista-avaliativa-python
 Aluno Felipe Franco Pinheiro
-Aluno Felipe Franco Pinheiro
 
 ## ex1.py
 
