@@ -3,12 +3,27 @@ import random
 arquivo = "C:\\Users\\bipef\\OneDrive\\Documentos\\bipe python\\python listas\\lista_palavras.txt"
 
 def le_arquivo(arq):
+    """
+    Lê as palavras de um arquivo de texto.
+
+    Args:
+        arq: O caminho do arquivo.
+
+    Retorna:
+        lista: Uma lista de palavras lidas do arquivo.
+    """
     with open(arq, encoding="UTF-8") as f:
         return [linha.strip() for linha in f]
 
 lista = le_arquivo(arquivo)
 
 def escolher_palavra():
+    """
+    Escolhe aleatoriamente uma palavra da lista de palavras.
+
+    Retorna:
+        str: A palavra escolhida.
+    """
     numero_letras = int(input("Digite a quantidade de letras que deseja ter na palavra: "))
     palavras_possiveis = [palavra for palavra in lista if len(palavra) == numero_letras]
 
@@ -20,9 +35,28 @@ def escolher_palavra():
         return random.choice(palavras_possiveis)
 
 def inicia_letras(palavra):
+    """
+    Inicializa as letras da palavra ocultas com underscores.
+
+    Args:
+        palavra: A palavra oculta.
+
+    Retorna:
+        lista: Uma lista de underscores representando as letras ocultas.
+    """
     return ["_" for _ in palavra]
 
 def verificar_palavra(palavra, chute):
+    """
+    Verifica as letras da palavra e fornece dicas de cores.
+
+    Args:
+        palavra: A palavra a ser adivinhada.
+        chute: O chute do jogador.
+
+    Retorna:
+        lista: Uma lista de dicas de cores para cada letra do chute.
+    """
     dica = []
     for i, letra in enumerate(palavra):
         if letra == chute[i]:
@@ -34,6 +68,16 @@ def verificar_palavra(palavra, chute):
     return dica
 
 def colorir_palavra(palavra, dica):
+    """
+    Colore a palavra com base nas dicas de cores.
+
+    Args:
+        palavra: A palavra a ser colorida.
+        dica: Uma lista de dicas de cores para cada letra da palavra.
+
+    Retorna:
+        str: A palavra colorida com códigos de cores ANSI.
+    """
     palavra_colorida = ""
     for letra, cor in zip(palavra, dica):
         if cor == "verde":
@@ -45,6 +89,15 @@ def colorir_palavra(palavra, dica):
     return palavra_colorida
 
 def letras_usadas(teclado, palavra_sorteada, chute):
+    """
+    Registra as letras usadas pelo jogador e remove do teclado.
+
+    Args:
+        teclado: Uma lista de letras disponíveis.
+        palavra_sorteada: A palavra a ser adivinhada.
+        chute: O chute do jogador.
+
+    """
     teclado_colorido = teclado.copy()
     for letra in chute:
         if letra not in palavra_sorteada:
