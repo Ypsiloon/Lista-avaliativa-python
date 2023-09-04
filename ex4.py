@@ -1,6 +1,15 @@
 import re
 
 def cadastrar_usuario(campos_obrigatorios):
+    """
+    Cadastra um usuário com campos obrigatórios e adicionais.
+
+    Args:
+        campos_obrigatorios: Lista de campos obrigatórios para cadastro.
+
+    Retorna:
+        Dicionario: Um dicionário com os dados do usuário cadastrado.
+    """
     dados_usuario = {}
 
     for campo in campos_obrigatorios:
@@ -16,7 +25,13 @@ def cadastrar_usuario(campos_obrigatorios):
     return dados_usuario
 
 def imprimir_usuarios(opcao):
+    """
+    Imprime os usuários de acordo com a opção escolhida.
 
+    Args:
+        opcao: Opção selecionada pelo usuário.
+
+    """
     usuarios = banco_usuarios.values()
 
     match opcao:
